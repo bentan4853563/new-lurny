@@ -112,3 +112,6 @@ button:focus-visible {
   scrollbar-width: none;  /* Firefox */
 }
 
+.szh-menu-button {
+  background-color: transparent;
+}
