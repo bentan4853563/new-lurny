@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb://ec2-3-84-247-235.compute-1.amazonaws.com:27017/?ssl=false",
+  "jwtSecret": "OneBrickSecret"
+}
