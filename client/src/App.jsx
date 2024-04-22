@@ -57,13 +57,13 @@ function App() {
       <Suspense>
         <Router style={{ minWidth: "100vw" }}>
           <Routes>
-            <Route path="/" element={<ProtectedRoute />}>
-              <Route path="/lurny/list" element={<LurnyPublish />} />
-              <Route path="/lurny-category" element={<LurnyUser />} />
-              <Route path="/lurny/feeds/:id" element={<LurnyQuiz />} />
-              <Route path="/lurny/search" element={<LurnySearch />} />
-              <Route path="/lurny/price" element={<LurnyPrice />} />
-              <Route path="/lurny/setting" element={<LurnySetting />} />
+            <Route path="/lurny" element={<ProtectedRoute />}>
+              <Route path="list" element={<LurnyPublish />} />
+              <Route path="profile" element={<LurnyUser />} />
+              <Route path="feeds/:id" element={<LurnyQuiz />} />
+              <Route path="search" element={<LurnySearch />} />
+              <Route path="price" element={<LurnyPrice />} />
+              <Route path="setting" element={<LurnySetting />} />
             </Route>
             <Route path="/home" element={<Home />} />
             <Route path="/signin" element={<Signin />} />
