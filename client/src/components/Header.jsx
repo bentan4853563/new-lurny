@@ -31,7 +31,7 @@ export default function Header() {
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/home");
+    navigate("/");
   };
 
   return (
@@ -39,7 +39,7 @@ export default function Header() {
       className="bg-black px-[12rem] flex justify-between items-center py-[4rem] sm:py-[1.5rem] sticky"
       style={{ zIndex: 999 }}
     >
-      <Link to="/home" className="select-none">
+      <Link to="/" className="select-none">
         <img
           src={LetterLogo}
           alt="Letter logo"
