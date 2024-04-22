@@ -39,7 +39,6 @@ export const handleInsertLurny = (lurny) => async (dispatch) => {
     const response = await fetch(`${backend_url}/api/lurny/insert`, options);
     if (response.ok) {
       const responseData = await response.json();
-      console.log("response", responseData);
       dispatch(insertLurny(responseData));
       toast.success("Inserted!", {
         position: "top-right",

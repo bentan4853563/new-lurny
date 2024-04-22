@@ -42,7 +42,6 @@ function App() {
         event.data.type === "FROM_EXTENSION"
       ) {
         const data = event.data.payload;
-        console.log("Received data in React:", data);
         localStorage.setItem("tempData", JSON.stringify(data));
       }
     }

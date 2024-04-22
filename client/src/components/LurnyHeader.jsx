@@ -16,7 +16,6 @@ export default function LurnyHeader() {
 
   useEffect(() => {
     const accessToken = sessionStorage.getItem("token");
-    console.log("accessToken", accessToken);
     if (accessToken) {
       setUserData(jwtDecode(accessToken));
     }

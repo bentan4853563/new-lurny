@@ -180,7 +180,6 @@ function LurnyQuiz() {
 
   const goBack = () => {
     if (selectedIndex > 0) {
-      console.log("Up", lurnies[selectedIndex - 1]._id);
       navigate(`/lurny/feeds/${lurnies[selectedIndex - 1]._id}`);
     }
   };

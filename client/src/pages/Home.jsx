@@ -76,7 +76,6 @@ export default function Home() {
       const result = await response.json();
       localStorage.setItem("tempData", JSON.stringify(result));
       navigate("/lurny/profile");
-      console.log("Extracted Text:", result);
     } catch (error) {
       console.error("Error during the file upload:", error);
     }

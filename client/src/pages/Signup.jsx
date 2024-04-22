@@ -34,7 +34,6 @@ const Signup = () => {
     });
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result.user.accessToken);
         dispatch(signUp(result.user.accessToken, navigate));
       })
       .catch((error) => {
