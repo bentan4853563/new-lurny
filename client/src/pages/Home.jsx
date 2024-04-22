@@ -46,14 +46,11 @@ export default function Home() {
   const sendLurnifyRequest = async () => {
     setUrlLoading(true);
 
-    const response = await fetch(
-      "http://ec2-3-84-247-235.compute-1.amazonaws.com:5173/fetch",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: url }), // Using url passed in as an argument
-      }
-    );
+    const response = await fetch("http://lurny.net:5173/fetch", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url: url }), // Using url passed in as an argument
+    });
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const data = await response.json();
     localStorage.setItem("tempData", JSON.stringify(data));
@@ -69,13 +66,10 @@ export default function Home() {
     setPDFLoading(true);
 
     try {
-      const response = await fetch(
-        "http://ec2-3-84-247-235.compute-1.amazonaws.com:5173/upload_pdf",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const response = await fetch("http://lurny.net:5173/upload_pdf", {
+        method: "POST",
+        body: formData,
+      });
       if (!response.ok)
         throw new Error(`HTTP error! status: ${response.status}`);
 
