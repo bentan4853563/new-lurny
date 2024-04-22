@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { IoIosArrowForward } from "react-icons/io";
 import { ImSearch } from "react-icons/im";
-
-import { useLurnyStore } from "../stores/lurnyStore";
 
 import LurnyHeader from "../components/LurnyHeader";
 import LurnyItem from "../components/LurnyItem";
@@ -14,7 +12,6 @@ import NewPagination from "../components/NewPagination";
 // import Pagination from "../components/Pagination";
 
 const LurnySearch = () => {
-  const { lurnies, setLurnies, clearLurnies } = useLurnyStore();
   const [showFilter, setShowFilter] = useState(false);
   const [searchTerm, setSearchTerm] = useState(""); // State to hold the search term
   const [filteredLurnies, setFilteredLurnies] = useState([]);
@@ -28,50 +25,6 @@ const LurnySearch = () => {
   const currentItems = filteredLurnies.slice(indexOfFirstItem, indexOfLastItem);
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const backend_url = import.meta.env.VITE_BACKEND_URL;
-
-  useEffect(() => {
-    getLurnies();
-
-    return () => {
-      clearLurnies();
-    };
-  }, []);
-
-  useEffect(() => {
-    setFilteredLurnies(
-      lurnies.filter(
-        (lurny) =>
-          lurny.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          lurny.collections.some((collection) =>
-            collection.toLowerCase().includes(searchTerm.toLowerCase())
-          )
-      )
-    );
-  }, [searchTerm, lurnies]);
-
-  const getLurnies = async () => {
-    const options = {
-      method: "GET", // Request method
-      headers: {
-        "Content-Type": "application/json", // Indicate JSON content
-        "ngrok-skip-browser-warning": true,
-      },
-    };
-
-    await fetch(`${backend_url}/api/lurny/get`, options)
-      .then((response) => response.json()) // Parse JSON response
-      .then((responseData) => {
-        setLurnies(responseData);
-      })
-      .catch((error) => {
-        console.error("Error:", error); // Handle errors
-        // toast.error(`Error! \n${error}`, {
-        //   position: "top-right",
-        // });
-      });
-  };
 
   return (
     <div className="h-[100vh] w-[100vw] font-raleway">
