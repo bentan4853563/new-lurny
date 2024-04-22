@@ -47,8 +47,9 @@ router.post("/signin", async (req, res) => {
 
   try {
     const decodedToken = await admin.auth().verifyIdToken(accessToken);
-    const uid = decodedToken.uid;
-    const existingUser = await User.findOne({ uid: uid });
+    console.log(decodedToken);
+    const email = decodedToken.email;
+    const existingUser = await User.findOne({ email: email });
     if (existingUser) {
       const jwtToken = jwt.sign(
         {
