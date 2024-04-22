@@ -16,7 +16,6 @@ router.get("/get", async (req, res) => {
 
 router.post("/my-lurnies", async (req, res) => {
   try {
-    console.log(req.body.user);
     const lurnies = await Lurny.find({ user: req.body.user })
       .sort({
         date: -1,
@@ -53,7 +52,6 @@ router.post("/lurny-update", async (req, res) => {
 router.post("/insert", async (req, res) => {
   try {
     const { user, title, summary, collections, quiz, image, url } = req.body;
-    console.log(user, title);
     const newLurny = new Lurny({
       user,
       title,
@@ -65,10 +63,8 @@ router.post("/insert", async (req, res) => {
     });
 
     const savedLurny = await newLurny.save();
-    console.log("Lurny created successfully:", savedLurny);
 
     const response = await Lurny.findById(savedLurny._id).populate("user");
-    console.log("===>>", response);
     res.status(201).json(response);
   } catch (error) {
     res.status(400).json({ message: error.message });
