@@ -17,7 +17,6 @@ export const signIn = (accessToken, navigate) => async (dispatch) => {
 
     if (response.ok) {
       const data = await response.json();
-      console.log("Response", data);
       dispatch(login(data.token));
       navigate("/lurny/list");
     } else {
