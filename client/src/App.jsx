@@ -1,20 +1,20 @@
-import { Suspense, lazy, useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { jwtDecode } from "jwt-decode";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Loading from "./components/Loading";
-const Home = lazy(() => import("./pages/Home"));
-const Signup = lazy(() => import("./pages/Signup"));
-const Signin = lazy(() => import("./pages/Signin"));
-const LurnyQuiz = lazy(() => import("./pages/LurnyQuiz"));
-const LurnyPrice = lazy(() => import("./pages/LurnyPrice"));
-const LurnyPublish = lazy(() => import("./pages/LurnyPublish"));
-const LurnyUser = lazy(() => import("./pages/LurnyUser"));
-const LurnySetting = lazy(() => import("./pages/LurnySetting"));
-const LurnySearch = lazy(() => import("./pages/LurnySearch"));
-const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
-const ProtectedRoute = lazy(() => import("./routes/ProtectedRoutes"));
+import Home from "./pages/Home";
+import Signup from "./pages/Signup";
+import Signin from "./pages/Signin";
+import LurnyQuiz from "./pages/LurnyQuiz";
+import LurnyPrice from "./pages/LurnyPrice";
+import LurnyPublish from "./pages/LurnyPublish";
+import LurnyUser from "./pages/LurnyUser";
+import LurnySetting from "./pages/LurnySetting";
+import LurnySearch from "./pages/LurnySearch";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import ProtectedRoute from "./routes/ProtectedRoutes";
 
 import { getLurnies } from "./actions/lurny";
 import { setUserDetails } from "./reducers/userSlice";
