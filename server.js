@@ -62,14 +62,14 @@ app.post("/hello", (req, res) => {
   res.send("Hello");
 });
 
-if (process.env.NODE_ENV === "production") {
-  // Set static folder
-  app.use(express.static("dist"));
+// if (process.env.NODE_ENV === "production") {
+//   // Set static folder
+//   app.use(express.static("dist"));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
-  });
-}
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
+//   });
+// }
 
 const PORT = process.env.PORT || 443;
 
