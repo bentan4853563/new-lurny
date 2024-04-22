@@ -58,6 +58,9 @@ app.use(cors());
 
 app.use("/api/lurny", require("./routes/api/lurnyRoutes"));
 app.use("/api/auth", require("./routes/api/newAuth"));
+app.post("/hello", (req, res) => {
+  res.send("Hello");
+});
 
 if (process.env.NODE_ENV === "production") {
   // Set static folder
