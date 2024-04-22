@@ -43,8 +43,7 @@ require("dotenv").config();
 
 const options = {
   key: fs.readFileSync("/etc/letsencrypt/live/lurny.net/privkey.pem"),
-  cert: fs.readFileSync("/etc/letsencrypt/live/lurny.net/cert.pem"),
-  ca: fs.readFileSync("/etc/letsencrypt/live/lurny.net/chain.pem"),
+  ca: fs.readFileSync("/etc/letsencrypt/live/lurny.net/fullchain.pem"),
 };
 
 const app = express();
