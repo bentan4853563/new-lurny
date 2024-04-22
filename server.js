@@ -42,8 +42,8 @@ const connectDB = require("./config/db");
 require("dotenv").config();
 
 const options = {
-  key: fs.readFileSync("/etc/letsencrypt/live/lurny.net/privkey.pem"),
-  ca: fs.readFileSync("/etc/letsencrypt/live/lurny.net/fullchain.pem"),
+  key: fs.readFileSync("/etc/letsencrypt/live/lurny.net/privkey.pem", "utf8"),
+  ca: fs.readFileSync("/etc/letsencrypt/live/lurny.net/fullchain.pem", "utf8"),
   cert: fs.readFileSync("/etc/letsencrypt/live/lurny.net/cert.pem", "utf8"),
 };
 
