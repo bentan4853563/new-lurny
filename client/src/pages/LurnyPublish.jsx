@@ -142,7 +142,7 @@ const LurnyPublish = () => {
       ) {
         const data = event.data.payload;
         localStorage.setItem("tempData", JSON.stringify(data));
-        navigate("/lurny-category");
+        navigate("/lurny/profile");
         // setTempData(JSON.stringify(data));
       }
     }

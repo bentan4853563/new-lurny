@@ -680,7 +680,7 @@ export default function MobileQuizItem({
                   </button>
                 ) : (
                   <button
-                    onClick={() => navigate("/lurny-category")}
+                    onClick={() => navigate("/lurny/profile")}
                     className="bg-[#FFC36D] mx-auto mt-[2rem] text-[8rem] border-none focus:outline-none active:bg-yellow-300 text-black"
                   >
                     {/* {translations[language].goToHome} */}GO TO HOME

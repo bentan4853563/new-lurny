@@ -58,7 +58,7 @@ export default function Home() {
     const data = await response.json();
     localStorage.setItem("tempData", JSON.stringify(data));
     setUrlLoading(false);
-    navigate("/lurny-category");
+    navigate("/lurny/profile");
   };
 
   const sendPDF = async () => {
@@ -81,7 +81,7 @@ export default function Home() {
 
       const result = await response.json();
       localStorage.setItem("tempData", JSON.stringify(result));
-      navigate("/lurny-category");
+      navigate("/lurny/profile");
       console.log("Extracted Text:", result);
     } catch (error) {
       console.error("Error during the file upload:", error);

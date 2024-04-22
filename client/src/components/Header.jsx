@@ -68,7 +68,7 @@ export default function Header() {
           >
             <MenuItem>
               <Link
-                to="/lurny-category"
+                to="/lurny/profile"
                 className="px-[8rem] sm:px-[2rem] text-[8rem] sm:text-[1.5rem] text-black hover:text-black"
               >
                 Profile

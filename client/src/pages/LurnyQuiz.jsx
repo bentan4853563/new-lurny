@@ -66,7 +66,7 @@ function LurnyQuiz() {
       ) {
         const data = event.data.payload;
         localStorage.setItem("tempData", JSON.stringify(data));
-        navigate("/lurny-category");
+        navigate("/lurny/profile");
         // setTempData(JSON.stringify(data));
       }
     }
@@ -315,7 +315,7 @@ function LurnyQuiz() {
             >
               <MenuItem>
                 <Link
-                  to="/lurny-category"
+                  to="/lurny/profile"
                   className="px-[8rem] sm:px-[2rem] text-[8rem] sm:text-[1.5rem] text-black hover:text-black"
                 >
                   Profile

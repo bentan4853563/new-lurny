@@ -42,7 +42,7 @@ export default function LurnyHeader() {
           <ImSearch className="text-[16rem] sm:text-[10rem] md:text-[8rem] lg:text-[6rem] xl:text-[3rem] text-gray-500 cursor-pointer" />
         </Link>
 
-        <Link to="/lurny-category" className="felx items-center">
+        <Link to="/lurny/profile" className="felx items-center">
           {userData && (
             <img
               src={userData.photoURL}
