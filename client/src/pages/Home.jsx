@@ -2,16 +2,16 @@ import { useState } from "react";
 import BeatLoader from "react-spinners/BeatLoader";
 import { IoMenu } from "react-icons/io5";
 
-// import Image1 from "../assets/images/home/home1.png";
-import Image2 from "../assets/images/home/home4.png";
-import Image3 from "../assets/images/home/home2.png";
-import Image4 from "../assets/images/home/home5.png";
-import Image5 from "../assets/images/home/home6.png";
-import Image6 from "../assets/images/home/home7.png";
-import Image7 from "../assets/images/home/home8.png";
-import Image8 from "../assets/images/home/home9.png";
+// import Image1 from "../assets/images//1.png";
+import Image2 from "../assets/images//4.png";
+import Image3 from "../assets/images//2.png";
+import Image4 from "../assets/images//5.png";
+import Image5 from "../assets/images//6.png";
+import Image6 from "../assets/images//7.png";
+import Image7 from "../assets/images//8.png";
+import Image8 from "../assets/images//9.png";
 
-import userImg from "../assets/images/home/User.png";
+import userImg from "../assets/images//User.png";
 import playIcon from "../assets/icons/play-icon.png";
 import FaqComponent from "../components/FaqComponent";
 import Header from "../components/Header";

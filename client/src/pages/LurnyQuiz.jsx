@@ -219,7 +219,7 @@ function LurnyQuiz() {
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/home");
+    navigate("/");
   };
 
   return (
@@ -606,7 +606,7 @@ function LurnyQuiz() {
       {/* Footer */}
       <div className="w-full flex sm:hidden justify-around items-center mb-[8rem]">
         <div className="flex flex-col text-white text-[12rem] items-center gap-[2rem]">
-          <Link to="/home">
+          <Link to="/">
             <BiLink id="source" className="text-white" />
           </Link>
           <label htmlFor="source" className="text-[8rem]">

@@ -23,12 +23,12 @@ export default function LurnyHeader() {
 
   const handleLogout = () => {
     sessionStorage.removeItem("token");
-    navigate("/home");
+    navigate("/");
   };
 
   return (
     <div className="w-full bg-black px-[20rem] flex justify-between items-center py-[4rem] sm:py-[1.5rem]">
-      <Link to="/home" className="select-none">
+      <Link to="/" className="select-none">
         <img
           src={LetterLogo}
           alt="Letter logo"
