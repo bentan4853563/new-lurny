@@ -58,13 +58,13 @@ app.use(cors());
 
 app.use("/api/lurny", require("./routes/api/lurnyRoutes"));
 app.use("/api/auth", require("./routes/api/newAuth"));
-app.post("/hello", (req, res) => {
+app.get("/hello", (req, res) => {
   res.send("Hello");
 });
 
 if (process.env.NODE_ENV === "production") {
   // Set static folder
-  // app.use(express.static("dist"));
+  app.use(express.static("dist"));
 
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
@@ -73,6 +73,6 @@ if (process.env.NODE_ENV === "production") {
 
 const PORT = process.env.PORT || 443;
 
-https.createServer(options, app).listen(PORT, "0.0.0.0", () => {
+https.createServer(options, app).listen(PORT, () => {
   console.log(`Server started on ${PORT}`);
 });
