@@ -51,7 +51,7 @@ export default function Signin() {
   }
 
   const handleCloseSigninModal = () => {
-    navigate("/");
+    navigate("/home");
   };
 
   return (

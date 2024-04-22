@@ -216,14 +216,14 @@ function LurnyQuiz() {
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/");
+    navigate("/home");
   };
 
   return (
     <div className="min-h-[100vh] bg-black font-raleway flex flex-col justify-start">
       {/* Header */}
       <div className="w-full bg-black px-[12rem] sm:px-[20rem] flex justify-between items-center py-[4rem] lg:py-[1.5rem]">
-        <Link to="/" className="select-none">
+        <Link to="/home" className="select-none">
           <img
             src={LetterLogo}
             alt="Letter logo"
@@ -565,7 +565,7 @@ function LurnyQuiz() {
       {/* Footer */}
       <div className="w-full flex sm:hidden justify-around items-center mb-[8rem]">
         <div className="flex flex-col text-white text-[12rem] items-center gap-[2rem]">
-          <Link to="/">
+          <Link to="/home">
             <SlHome id="home" className="text-white" />
           </Link>
           <label htmlFor="home" className="text-[8rem]">
