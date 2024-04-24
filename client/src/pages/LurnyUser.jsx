@@ -22,7 +22,6 @@ import {
   handleShareLurny,
 } from "../actions/lurny";
 import Header from "../components/Header";
-import { clearLoading, setLoading } from "../reducers/loadingSlice";
 
 const LurnySetting = () => {
   const dispatch = useDispatch();
