@@ -82,14 +82,6 @@ const LurnySetting = () => {
     }
   }, [userDetails, lurnies]);
 
-  useEffect(() => {
-    if (myLurnies.length > 0) {
-      dispatch(clearLoading());
-    } else {
-      dispatch(setLoading());
-    }
-  }, [myLurnies, dispatch]);
-
   const storedTempData = localStorage.getItem("tempData");
   useEffect(() => {
     if (storedTempData) {

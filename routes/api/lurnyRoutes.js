@@ -103,6 +103,12 @@ router.delete("/delete/:id", async (req, res) => {
   }
 });
 
+router.delete("/delete-byuser", async (req, res) => {
+  await Lurny.deleteMany({ user: "65f726277e1c4b277e67a352" });
+
+  res.send("Success!!");
+});
+
 router.delete("/lurnies/:id", async (req, res) => {
   try {
     const deletedLurny = await Lurny.findByIdAndDelete(req.params.id);
