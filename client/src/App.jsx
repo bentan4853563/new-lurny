@@ -29,7 +29,6 @@ import "animate.css";
 
 function App() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { loading } = useSelector((state) => state.loading);
 
   useEffect(() => {
@@ -49,7 +48,6 @@ function App() {
       ) {
         const data = event.data.payload;
         localStorage.setItem("tempData", JSON.stringify(data));
-        navigate("/lurny/profile");
       }
     }
 
