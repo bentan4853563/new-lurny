@@ -12,8 +12,8 @@ router.post("/signup", async (req, res) => {
 
   try {
     const decodedToken = await admin.auth().verifyIdToken(accessToken);
-    const uid = decodedToken.uid;
-    const existingUser = await User.findOne({ uid: uid });
+    const email = decodedToken.email;
+    const existingUser = await User.findOne({ email: email });
 
     if (existingUser) {
       res.status(409).json({ message: "User already exists" });
@@ -27,7 +27,7 @@ router.post("/signup", async (req, res) => {
       await newUser.save();
 
       const jwtToken = jwt.sign(
-        { uid: newUser.uid, email: newUser.email },
+        { id: newUser.id, email: newUser.email },
         "secreate",
         { expiresIn: "1h" }
       );

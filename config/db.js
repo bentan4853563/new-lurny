@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 const mongoose = require("mongoose");
 
-const mongoURI = "mongodb://127.0.0.1:27017/Lurny";
-// "mongodb+srv://nicolas1303563:awIKKGrgf4GmVYkV@cluster0.w3yzl84.mongodb.net/Lurny";
+const mongoURI =
+  "mongodb+srv://nicolas1303563:awIKKGrgf4GmVYkV@cluster0.w3yzl84.mongodb.net/Lurny";
 
 const connectDB = async () => {
   try {
