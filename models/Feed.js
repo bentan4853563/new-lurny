@@ -9,19 +9,19 @@ const FeedSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "lurnies",
   },
-  repeat: {
-    type: Number,
-  },
-  period: {
-    type: Number,
-  },
-  count: {
+  learn_count: {
     type: Number,
     default: 1,
   },
-  lastLearned: {
+  last_learned: {
     type: Date,
   },
+  // repeat: {
+  //   type: Number,
+  // },
+  // period: {
+  //   type: Number,
+  // },
 });
 
 module.exports = mongoose.model("feed", FeedSchema);

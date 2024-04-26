@@ -122,7 +122,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full bg-[#FFC36D] py-[16rem] sm:py-[8rem] px-[8rem] sm:px-[24rem] lg:px-[40rem] flex flex-col gap-[8rem] sm:gap-[2rem] items-center">
+      <div className="hidden w-full bg-[#FFC36D] py-[16rem] sm:py-[8rem] px-[8rem] sm:px-[24rem] lg:px-[40rem] flex-col gap-[8rem] sm:gap-[2rem] items-center">
         <p className="text-black text-[10rem] sm:text-[6rem] md:text-[4rem] leading-[10rem] font-bold font-raleway">
           Turn Curiosity into Knowledge - One Lurny at a Time
         </p>

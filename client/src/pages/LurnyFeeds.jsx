@@ -22,18 +22,19 @@ import {
   handleShareLurny,
 } from "../actions/lurny";
 import Header from "../components/Header";
+import getSchedule from "../utils/reminder";
 
-const LurnyUser = () => {
+const LurnyFeeds = () => {
   const dispatch = useDispatch();
 
-  const { lurnies } = useSelector((state) => state.lurny);
+  const { feeds } = useSelector((state) => state.feed);
 
   const [userDetails, setUserDetails] = useState(null);
-  const [myLurnies, setMyLurnies] = useState([]);
+  const [myFeeds, setMyFeeds] = useState([]);
   const [tempData, setTempData] = useState(null);
   const [showSidePan, setShowSidePan] = useState(false);
   // const [showAll, setShowAll] = useState(true);
-  // const [filterdLurnies, setFilteredLurnies] = useState([]);
+  // const [filterdfeeds, setFilteredfeeds] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(20); // Adjust as needed
@@ -41,9 +42,9 @@ const LurnyUser = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems =
-    myLurnies &&
-    myLurnies.length > 0 &&
-    myLurnies.slice(indexOfFirstItem, indexOfLastItem);
+    myFeeds &&
+    myFeeds.length > 0 &&
+    myFeeds.slice(indexOfFirstItem, indexOfLastItem);
   // Change page
   const paginate = useCallback((pageNumber) => setCurrentPage(pageNumber), []);
 
@@ -65,21 +66,26 @@ const LurnyUser = () => {
         setTempData(JSON.stringify(data));
       }
     }
-
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
   }, []);
 
   useEffect(() => {
-    // clearLurnies();
+    // clearfeeds();
     if (userDetails) {
-      let tempLurnies = lurnies;
-      let filtered = tempLurnies.filter(
-        (lurny) => lurny.user._id === userDetails.id
-      );
-      setMyLurnies(filtered);
+      let myFeeds = [];
+      feeds.map((lurny) => {
+        const schedule = getSchedule(lurny.user.repeatTimes, lurny.user.period);
+        if (
+          userDetails.id === lurny.user._id &&
+          Date.now() - lurny.last_learned > schedule[lurny.learn_count]
+        ) {
+          myFeeds.push(lurny);
+        }
+      });
+      setMyFeeds(feeds);
     }
-  }, [userDetails, lurnies]);
+  }, [userDetails, feeds]);
 
   const storedTempData = localStorage.getItem("tempData");
   useEffect(() => {
@@ -117,7 +123,7 @@ const LurnyUser = () => {
               image: defaultImg, // Ensure getDefaultImg function is defined or imported
               url: url ? url : fileName,
             };
-            dispatch(handleInsertLurny(lurnyObject, myLurnies[0].user));
+            dispatch(handleInsertLurny(lurnyObject, myFeeds[0].user));
           }
         } else {
           const { summary_content, questions, image, url } = parsedTempData;
@@ -153,28 +159,6 @@ const LurnyUser = () => {
       // setTempData(null);
     }
   }, [tempData, userDetails]);
-
-  // useEffect(() => {
-  //   setCurrentPage(1);
-  //   if (showAll) {
-  //     setFilteredLurnies(lurnies);
-  //   } else {
-  //     let temp = lurnies.filter((lurny) => lurny.user !== userDetails.id);
-  //     setFilteredLurnies(temp);
-  //   }
-  // }, [showAll, lurnies]);
-
-  // const [countSharedTrue, setCountSharedTrue] = useState(0);
-
-  // useEffect(() => {
-  //   if (userDetails && lurnies && lurnies.length > 0) {
-  //     const count =
-  //       lurnies.length > 0
-  //         ? lurnies.filter((obj) => obj.user !== userDetails.id).length
-  //         : 0;
-  //     setCountSharedTrue(count);
-  //   }
-  // }, [userDetails, lurnies]);
 
   const isYoutubeUrl = (url) => {
     return url.includes("youtube.com") || url.includes("youtu.be");
@@ -229,7 +213,7 @@ const LurnyUser = () => {
         </div>
         <div className="hidden sm:flex">
           <UserPan
-            all={myLurnies.length}
+            all={myFeeds.length}
             // saved={countSharedTrue}
             // showAll={(value) => setShowAll(value)}
           />
@@ -240,7 +224,7 @@ const LurnyUser = () => {
           className={`${showSidePan ? "absolute" : "hidden"} sm:block`}
         ></div>
 
-        {/* My Lurnies */}
+        {/* My feeds */}
         <div className="w-full flex flex-col justify-between items-center">
           <div className="w-full flex flex-wrap pl-[10rem] justify-start gap-[8rem] lg:gap-[4rem]">
             {currentItems &&
@@ -276,9 +260,9 @@ const LurnyUser = () => {
                   );
               })}
           </div>
-          {myLurnies.length > 0 && (
+          {myFeeds.length > 0 && (
             <NewPagination
-              totalItems={myLurnies && myLurnies.length}
+              totalItems={myFeeds && myFeeds.length}
               itemsPerPage={itemsPerPage}
               currentPage={currentPage}
               paginate={(value) => paginate(value)}
@@ -290,4 +274,4 @@ const LurnyUser = () => {
   );
 };
 
-export default LurnyUser;
+export default LurnyFeeds;

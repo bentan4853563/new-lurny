@@ -30,6 +30,7 @@ import MobileQuizItem from "../components/MobileQuizItem";
 import TranslateComponent from "../components/TranslateComponent";
 import { logout } from "../reducers/userSlice";
 import { clearLoading, setLoading } from "../reducers/loadingSlice";
+import { handleRemember } from "../actions/feed";
 
 function LurnyQuiz() {
   const dispatch = useDispatch();
@@ -167,6 +168,7 @@ function LurnyQuiz() {
     if (index < 2) {
       setContent(index);
     } else {
+      dispatch(handleRemember(userData._id, lurnies[selectedIndex]._id));
       setOpenRememberModal(true);
     }
   };

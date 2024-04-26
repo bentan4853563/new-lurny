@@ -28,7 +28,7 @@ export const signIn = (accessToken, navigate) => async (dispatch) => {
 
         setTimeout(() => {
           navigate("/signup");
-        }, 2000);
+        }, 1000);
       } else {
         toast.error(response.error, {
           position: "top-right",
