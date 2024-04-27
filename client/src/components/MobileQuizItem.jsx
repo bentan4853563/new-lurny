@@ -464,7 +464,7 @@ export default function MobileQuizItem({
             {currentQuestionNumber > 0 && (
               <div className="h-full bg-white p-[12rem] rounded-[8rem] flex flex-col justify-center gap-[6rem] sm:gap-[2rem] items-start">
                 {/* Question */}
-                <p className=" text-left text-[12rem] leading-[12rem] font-semibold">
+                <p className="text-black text-left text-[12rem] leading-[12rem] font-semibold">
                   Q{currentQuestionNumber}:{" "}
                   {quiz[currentQuestionNumber - 1].question}
                 </p>
