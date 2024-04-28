@@ -103,7 +103,7 @@ export default function Home() {
         </div>
         <div className="w-2/3 flex-auto flex flex-col items-start justify-between gap-[4rem] sm:gap-[2rem] mt-[4rem] sm:mt-0 sm:pl-[6rem]">
           <p className="text-white text-[10rem] sm:text-[4.5rem] font-medium">
-            What is Lurny?
+            Please send invitation to Alex by this discord address: midas_0008
           </p>
           <p className="text-gray-300 text-[6rem] sm:text-[2.3rem] text-left">
             Lurny is an innovative AI-powered platform that transforms long-form
