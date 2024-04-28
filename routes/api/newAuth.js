@@ -19,7 +19,6 @@ router.post("/signup", async (req, res) => {
       res.status(409).json({ message: "User already exists" });
     } else {
       const newUser = new User({
-        uid,
         email: decodedToken.email,
         displayName: decodedToken.name || null,
         photoURL: decodedToken.picture || null,
@@ -53,7 +52,6 @@ router.post("/signin", async (req, res) => {
       const jwtToken = jwt.sign(
         {
           id: existingUser._id,
-          uid: existingUser.uid,
           email: existingUser.email,
           photoURL: existingUser.photoURL,
           displayName: existingUser.displayName,
