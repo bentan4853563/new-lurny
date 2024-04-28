@@ -239,10 +239,12 @@ export default function Home() {
       </div>
 
       {isVideoModalOpen && (
-        <VideoModal
-          hideModal={() => setIsVideoModalOpen(false)}
-          url="https://youtu.be/u0tQ11lbsko"
-        />
+        <div className="w-full h-full flex items-center justify-center fixed z-50">
+          <VideoModal
+            hideModal={() => setIsVideoModalOpen(false)}
+            url="https://youtu.be/u0tQ11lbsko"
+          />
+        </div>
       )}
 
       <div className="bg-[#FFC36D] px-[8rem] sm:px-[24rem] py-[16rem] sm:py-[8rem]">

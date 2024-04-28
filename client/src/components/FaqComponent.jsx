@@ -13,25 +13,25 @@ const FaqComponent = () => {
       id: 1,
       question: "What is Lurny?",
       answer:
-        "A Lurny is a bite sized knowledge object that transforms any online content, including videos and articles, into an engaging, interactive microlesson. Each Lurny includes a concise summary and a set of interactive quizzes to test your understanding, all designed to make learning quick, enjoyable, and effective.",
+        "Lurny is a digital platform that transforms any online content—articles, videos, or documents—into concise, learnable called Lurnies, which include key learning points and quizzes.",
     },
     {
       id: 2,
-      question: "Can I use Lurny without the Chrome extension?",
+      question: "How does Lurny enhance learning?",
       answer:
-        "If Lurny has a web-based platform, a mobile app, or integration with other browsers or tools, then you might be able to use some of its features without the Chrome extension. However, if Lurny is exclusively a Chrome extension, then its usage would be inherently tied to the Chrome browser and it would not function outside of that context.",
+        "Lurny simplifies complex information into digestible stubs, offers quizzes for self-assessment, and uses the ROSI algorithm for effective memory retention, ensuring you not only learn but remember.",
     },
     {
       id: 3,
-      question: "How does the StubIT Chrome extension work?",
+      question: "Who can create a Lurny?",
       answer:
-        "The 'StubIT' Chrome extension you're referring to doesn't appear to be a well-known or widely recognized extension based on the information available up to my last update in early 2023. If it's a niche or new extension, or possibly misspelled or misremembered, that would explain the lack of information.",
+        "Anyone can create a Lurny! Just install our browser extension, click on it while viewing your desired content, and it instantly converts into a structured Lurny with summaries and quizzes.",
     },
     {
       id: 4,
-      question: "What is the ROSI algorithm and how does it help me learn?",
+      question: "Is Lurny free to use?",
       answer:
-        "ROSI, which stands for Return on Security Investment, is not an algorithm meant for learning in the educational sense. Instead, it is a concept used in the field of information security management to quantify the effectiveness of security measures. The goal of ROSI is to help organizations understand the financial benefits of investing in security controls by comparing the cost of these controls against the potential losses that could occur from security incidents.",
+        "Lurny offers a free plan with access to numerous features. Additional premium features, including unlimited ROSI saves and advanced quizzes, are available through our subscription plans.",
     },
     // Add more FAQs here
   ];

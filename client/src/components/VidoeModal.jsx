@@ -23,11 +23,11 @@ const VideoModal = ({ hideModal, url }) => {
 
   return (
     <div
-      className="sm:w-[36rem] h-[16rem] sm:h-[24rem] flex bg-white rounded-md relative"
+      className="w-full sm:w-[64rem] h-[16rem] sm:h-[36rem] flex bg-white rounded-md relative"
       onClick={handleClose}
     >
       <span
-        className="absolute top-2 right-2 cursor-pointer text-black"
+        className="absolute top-2 right-2 cursor-pointer text-white"
         onClick={hideModal}
       >
         <IoClose size={24} />
