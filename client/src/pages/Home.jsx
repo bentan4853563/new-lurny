@@ -11,11 +11,14 @@ import Image6 from "../assets/images/home/home7.png";
 import Image7 from "../assets/images/home/home8.png";
 import Image8 from "../assets/images/home/home9.png";
 
-import userImg from "../assets/images/home/User.png";
+import Avatar1 from "../assets/images/home/avatar1.png";
+import Avatar2 from "../assets/images/home/avatar2.png";
+import Avatar3 from "../assets/images/home/avatar3.png";
 import playIcon from "../assets/icons/play-icon.png";
 import FaqComponent from "../components/FaqComponent";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
+import VideoModal from "../components/VidoeModal";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -24,6 +27,7 @@ export default function Home() {
   const [file, setFile] = useState(null);
   const [urlLoading, setUrlLoading] = useState(false);
   const [pdfLoading, setPDFLoading] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   const getYouTubeID = (url) => {
     const regExp =
@@ -101,9 +105,9 @@ export default function Home() {
             className="inline-block w-full h-full object-cover mx-auto"
           />
         </div>
-        <div className="w-2/3 flex-auto flex flex-col items-start justify-between gap-[4rem] sm:gap-[2rem] mt-[4rem] sm:mt-0 sm:pl-[6rem]">
+        <div className="w-full sm:w-2/3 flex-auto flex flex-col items-start justify-between gap-[4rem] sm:gap-[2rem] mt-[4rem] sm:mt-0 sm:pl-[6rem]">
           <p className="text-white text-[10rem] sm:text-[4.5rem] font-medium">
-            Please send invitation to Alex by this discord address: midas_0008
+            What is Lurny?
           </p>
           <p className="text-gray-300 text-[6rem] sm:text-[2.3rem] text-left">
             Lurny is an innovative AI-powered platform that transforms long-form
@@ -221,7 +225,10 @@ export default function Home() {
         </div>
         <div className="w-5/12 hidden sm:flex relative">
           <img src={Image3} alt="image3" className="object-cover" />
-          <div className=" absolute left-[8rem] top-[10rem]">
+          <div
+            className="absolute left-[8rem] top-[10rem]"
+            onClick={() => setIsVideoModalOpen(true)}
+          >
             <img
               src={playIcon}
               alt="Play icon"
@@ -230,6 +237,13 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {isVideoModalOpen && (
+        <VideoModal
+          hideModal={() => setIsVideoModalOpen(false)}
+          url="https://youtu.be/u0tQ11lbsko"
+        />
+      )}
 
       <div className="bg-[#FFC36D] px-[8rem] sm:px-[24rem] py-[16rem] sm:py-[8rem]">
         <h2 className="text-black text-[10rem] sm:text-[6rem] md:text-[4.5rem] leading-[10rem] font-semibold">
@@ -332,7 +346,7 @@ export default function Home() {
           <div className="w-[120rem] sm:w-[32rem] h-[180rem] sm:h-[50rem] p-[12rem] sm:p-[4rem] bg-gray-100 rounded-[2rem] flex flex-col justify-between gap-[12rem] sm:gap-0">
             <div className="flex flex-col items-start gap-[12rem] sm:gap-[2rem]">
               <img
-                src={userImg}
+                src={Avatar1}
                 alt="User avatar"
                 className="rounded-full w-[28rem] sm:w-[8rem]"
               />
@@ -355,7 +369,7 @@ export default function Home() {
           <div className="w-[120rem] sm:w-[32rem] h-[180rem] sm:h-[50rem] p-[12rem] sm:p-[4rem] bg-gray-100 rounded-[2rem] flex flex-col justify-between gap-[12rem] sm:gap-0">
             <div className="flex flex-col items-start gap-[12rem] sm:gap-[2rem]">
               <img
-                src={userImg}
+                src={Avatar2}
                 alt="User avatar"
                 className="rounded-full w-[28rem] sm:w-[8rem]"
               />
@@ -378,7 +392,7 @@ export default function Home() {
           <div className="w-[120rem] sm:w-[32rem] h-[180rem] sm:h-[50rem] p-[12rem] sm:p-[4rem] bg-gray-100 rounded-[2rem] flex flex-col justify-between gap-[12rem] sm:gap-0">
             <div className="flex flex-col items-start gap-[12rem] sm:gap-[2rem]">
               <img
-                src={userImg}
+                src={Avatar3}
                 alt="User avatar"
                 className="rounded-full w-[28rem] sm:w-[8rem]"
               />

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import { GrGoogle } from "react-icons/gr";
-import { FaFacebookSquare } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
+// import { FaFacebookSquare } from "react-icons/fa";
+// import { FaLinkedin } from "react-icons/fa";
 
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ import { auth } from "../firebase/config";
 import {
   signInWithPopup,
   GoogleAuthProvider,
-  FacebookAuthProvider,
+  // FacebookAuthProvider,
 } from "firebase/auth";
 
 import BgImage from "../assets/images/signin.png";
@@ -36,19 +36,19 @@ export default function Signin() {
     }
   }
 
-  function signInWithFacebook() {
-    const provider = new FacebookAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        if (result.credential) {
-          var token = result.credential.accessToken;
-          signIn(token, navigate);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+  // function signInWithFacebook() {
+  //   const provider = new FacebookAuthProvider();
+  //   signInWithPopup(auth, provider)
+  //     .then((result) => {
+  //       if (result.credential) {
+  //         var token = result.credential.accessToken;
+  //         signIn(token, navigate);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }
 
   const handleCloseSigninModal = () => {
     navigate("/");
@@ -75,24 +75,24 @@ export default function Signin() {
           help you learn efficiently.
         </p>
         <div className="flex flex-col gap-[4rem] sm:gap-[3rem] md:gap-[2rem] xl:gap-[1rem] text-black text-[10rem] sm:text-[8rem] md:text-[4rem] lg:text-[2.5rem] xl:text-[2rem]">
-          <div className="flex items-center gap-[2rem] px-[4rem] sm:px-[1rem] py-[0.5rem] border border-gray-300 outline-none hover:border-[#7F52BB] rounded-md cursor-pointer ">
+          {/* <div className="flex items-center gap-[2rem] px-[4rem] sm:px-[1rem] py-[0.5rem] border border-gray-300 outline-none hover:border-[#7F52BB] rounded-md cursor-pointer ">
             <FaLinkedin />
             <span>Continue with LinkedIn</span>
-          </div>
+          </div> */}
           <div
             onClick={signInWithGoogle}
-            className=" flex items-center gap-[2rem] px-[4rem] sm:px-[1rem] py-[0.5rem] border border-gray-300 outline-none hover:border-[#7F52BB] rounded-md cursor-pointer hover:"
+            className=" flex items-center gap-[2rem] px-[4rem] sm:px-[2rem] py-[1rem] border border-gray-300 outline-none hover:border-[#7F52BB] rounded-md cursor-pointer hover:"
           >
             <GrGoogle />
             <span className="text-black">Continue with Google</span>
           </div>
-          <div
+          {/* <div
             onClick={signInWithFacebook}
             className="flex items-center gap-[2rem] px-[4rem] sm:px-[1rem] py-[0.5rem] border border-gray-300 outline-none hover:border-[#7F52BB] rounded-md cursor-pointer hover:"
           >
             <FaFacebookSquare />
             <span>Continue with Facebook</span>
-          </div>
+          </div> */}
         </div>
         <p className="text-left text-[6rem] sm:text-[4rem] md:text-[2.5rem] lg:text-[2rem] xl:text-[1.5rem]">
           By signing up to <b>Lurny.net</b> you consent and agree to Lurny’s
