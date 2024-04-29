@@ -86,7 +86,7 @@ export default function Home() {
     setPDFLoading(false);
   };
 
-  const Video = "https://www.youtube.com/watch?v=iyabl4dlxbY";
+  const Video = "https://youtu.be/u0tQ11lbsko";
   return (
     <div className="flex flex-col font-raleway">
       <Header />
