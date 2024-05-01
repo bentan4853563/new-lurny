@@ -29,7 +29,6 @@ import QuizItem from "../components/QuizItem";
 import MobileQuizItem from "../components/MobileQuizItem";
 import TranslateComponent from "../components/TranslateComponent";
 import { logout } from "../reducers/userSlice";
-import { clearLoading, setLoading } from "../reducers/loadingSlice";
 import { handleRemember } from "../actions/feed";
 
 function LurnyQuiz() {
@@ -120,14 +119,6 @@ function LurnyQuiz() {
       setRelatedLurnies([]); // Reset related lurnies if no relevant data is present
     }
   }, [lurnies, quizData]);
-
-  useEffect(() => {
-    if (quizData && Object.keys(quizData).length > 0) {
-      dispatch(clearLoading());
-    } else {
-      dispatch(setLoading());
-    }
-  }, [quizData]);
 
   const isYoutubeUrl = (url) => {
     if (url) {

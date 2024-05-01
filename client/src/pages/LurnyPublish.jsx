@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
@@ -10,12 +10,10 @@ import LurnyItem from "../components/LurnyItem";
 import FilterPan from "../components/FilterPan";
 import NewPagination from "../components/NewPagination";
 import Header from "../components/Header";
-import { clearLoading, setLoading } from "../reducers/loadingSlice";
 // import Pagination from "../components/Pagination";
 
 const LurnyPublish = () => {
   const location = useLocation();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { lurnies } = useSelector((state) => state.lurny);
@@ -40,14 +38,6 @@ const LurnyPublish = () => {
   // Change page
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  useEffect(() => {
-    if (filteredLurnies.length > 0) {
-      dispatch(clearLoading());
-    } else {
-      dispatch(setLoading());
-    }
-  }, [filteredLurnies, dispatch]);
 
   useEffect(() => {
     // Check if location.state exists and if it has the category property
