@@ -19,6 +19,7 @@ router.post("/signup", async (req, res) => {
       res.status(409).json({ message: "User already exists" });
     } else {
       const newUser = new User({
+        uid: crypto.randomUUID(),
         email: decodedToken.email,
         displayName: decodedToken.name || null,
         photoURL: decodedToken.picture || null,
