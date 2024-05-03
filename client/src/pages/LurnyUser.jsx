@@ -123,31 +123,31 @@ const LurnyUser = () => {
           console.log("parsedTempData", parsedTempData);
           const { summary_content, questions, image, url } = parsedTempData;
 
-          if (Array.isArray(summary_content) && summary_content.length > 0) {
-            // If summary_content[0] is a string containing JSON, parse it as well
-            const json_summary_content = JSON.parse(summary_content[0]);
+          // if (Array.isArray(summary_content) && summary_content.length > 0) {
+          const json_summary_content = JSON.parse(summary_content[0]);
+          // If summary_content[0] is a string containing JSON, parse it as well
 
-            const title = json_summary_content.title;
-            const summary = json_summary_content.summary;
-            const collections = json_summary_content.hash_tags;
+          const title = json_summary_content.title;
+          const summary = json_summary_content.summary;
+          const collections = json_summary_content.hash_tags;
 
-            let quiz = [];
-            questions.forEach((element) => {
-              quiz.push(JSON.parse(element));
-            });
+          let quiz = [];
+          questions.forEach((element) => {
+            quiz.push(JSON.parse(element));
+          });
 
-            const lurnyObject = {
-              user: userDetails.id,
-              title,
-              summary,
-              collections,
-              quiz,
-              image: getDefaultImg(image, url), // Ensure getDefaultImg function is defined or imported
-              url,
-            };
-            console.log("lurnyObject", lurnyObject);
-            dispatch(handleInsertLurny(lurnyObject));
-          }
+          const lurnyObject = {
+            user: userDetails.id,
+            title,
+            summary,
+            collections,
+            quiz,
+            image: getDefaultImg(image, url), // Ensure getDefaultImg function is defined or imported
+            url,
+          };
+          console.log("lurnyObject", lurnyObject);
+          dispatch(handleInsertLurny(lurnyObject));
+          // }
         }
       } catch (e) {
         console.error("Failed to parse tempData", e);
