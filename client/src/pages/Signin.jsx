@@ -68,7 +68,7 @@ export default function Signin() {
           className="absolute top-[4rem] sm:top-[2rem] right-[4rem] sm:right-[2rem] text-black text-[10rem] sm:text-[8rem] md:text-[4rem] lg:text-[2.5rem] xl:text-[2rem] cursor-pointer"
         />
         <h1 className="text-black text-[16rem] sm-[text-12rem] md:text-[6rem] lg:text-[5rem] xl:text-[3rem] font-bold">
-          Join Lurny
+          Signin Lurny
         </h1>
         <p className="text-black text-left text-[8rem] sm:text-[6rem] md:text-[4rem] lg:text-[3rem] xl:text-[2rem]">
           The world&lsquo;s largest collection of smart learning objects that
@@ -97,8 +97,8 @@ export default function Signin() {
         <p className="text-left text-[6rem] sm:text-[4rem] md:text-[2.5rem] lg:text-[2rem] xl:text-[1.5rem]">
           By signing up to <b>Lurny.net</b> you consent and agree to Lurny’s
           privacy policy to store, anage and process your personal information.
-          To read more, please see our{" "}
-          <Link to="/privacy-policy">privacy policy</Link> here.
+          To read more, please see our <Link to="/privacy">privacy policy</Link>{" "}
+          here.
         </p>
       </div>
     </div>

@@ -1,6 +1,12 @@
+import { Link } from "react-router-dom";
+import { IoClose } from "react-icons/io5";
+
 export default function PrivacyPolicy() {
   return (
-    <div className="bg-white flex justify-center">
+    <div className="bg-white flex justify-center relative">
+      <Link to="/" className="absolute top-2 right-2 cursor-pointer text-black">
+        <IoClose size={24} />
+      </Link>
       <div className="w-4/5 sm:w-2/3 lg:w-1/2 xl:w-1/3 h-full my-[24rem] sm:my-[8rem] flex flex-col gap-[4rem] text-black">
         <h1 className="text-[12rem] sm:text-[8rem] md:text-[6rem] lg:text-[4rem]  xl:text-[3rem] font-bold">
           Privacy Policy
