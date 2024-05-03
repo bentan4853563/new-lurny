@@ -23,7 +23,7 @@ const FaqItem = ({ faq, isOpen, onToggle }) => {
       </span>
       {isOpen && (
         <div className="bg-white px-[6rem] py-[2rem] xl:p-[2rem] flex justify-start shadow-md shadow-gray-200">
-          <p className="text-start text-[8rem] sm:text-[4rem] md:text-[3.5rem] lg:text-[2rem] select-none">
+          <p className="text-black text-start text-[8rem] sm:text-[4rem] md:text-[3.5rem] lg:text-[2rem] select-none">
             {faq.answer}
           </p>
         </div>
