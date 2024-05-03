@@ -85,10 +85,14 @@ export default function Header() {
           </Menu>
         ) : (
           <div className="flex items-center gap-[2rem]">
-            <span className="hidden sm:flex items-center gap-[1rem] text-white text-[1.5rem] cursor-pointer select-none">
+            <a
+              href="https://chromewebstore.google.com/detail/lurny/fhoanimekkdanmnoddlgdaaocijnmbpj"
+              target="blank"
+              className="hidden sm:flex items-center gap-[1rem] text-white text-[1.5rem] cursor-pointer select-none"
+            >
               <img src={ChromeIcon} alt="Chrome Icon" />
               Install Chrome Extension
-            </span>
+            </a>
             <a
               href="/lurny/list"
               className="hidden sm:flex bg-white px-6 py-2 rounded-md text-black text-[6rem] sm:text-[2rem] font-bold hover:bg-gray-200 hover:text-black justify-center items-center focus:outline-none border-none"
