@@ -124,7 +124,7 @@ const LurnyUser = () => {
           const { summary_content, questions, image, url } = parsedTempData;
 
           // if (Array.isArray(summary_content) && summary_content.length > 0) {
-          const json_summary_content = JSON.parse(summary_content[0]);
+          const json_summary_content = JSON.parse(summary_content);
           // If summary_content[0] is a string containing JSON, parse it as well
 
           const title = json_summary_content.title;
