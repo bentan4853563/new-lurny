@@ -13,7 +13,7 @@ const FaqComponent = () => {
       id: 1,
       question: "What is Lurny?",
       answer:
-        "Lurny is a digital platform that transforms any online content—articles, videos, or documents—into concise, learnable called Lurnies, which include key learning points and quizzes.",
+        "Lurny is a digital platform that transforms any online content—articles, videos, or documents—into concise, learnable formats called Lurnies, which include key learning points and quizzes.",
     },
     {
       id: 2,
