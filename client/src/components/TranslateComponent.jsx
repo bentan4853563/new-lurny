@@ -20,7 +20,7 @@ function TranslateComponent() {
       new window.google.translate.TranslateElement(
         {
           pageLanguage: "en",
-          includedLanguages: "en,hi,bn,te,mr,ta,gu,kn,ml,pa",
+          includedLanguages: "en,es,de,zh,fr,ru,ar,hi,bn,te,mr,ta,gu,kn,ml,pa",
         },
         "google_translate_element"
       );
