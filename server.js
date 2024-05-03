@@ -22,6 +22,15 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
+// Redirect www.lurny.net to lurny.net
+app.use((req, res, next) => {
+  if (req.hostname === "www.lurny.net") {
+    res.redirect(301, `https://lurny.net${req.url}`);
+  } else {
+    next();
+  }
+});
+
 app.use("/api/lurny", require("./routes/api/lurnyRoutes"));
 app.use("/api/auth", require("./routes/api/newAuth"));
 app.get("/hello", (req, res) => {
