@@ -120,6 +120,7 @@ const LurnyUser = () => {
             dispatch(handleInsertLurny(lurnyObject, myLurnies[0].user));
           }
         } else {
+          console.log("parsedTempData", parsedTempData);
           const { summary_content, questions, image, url } = parsedTempData;
 
           if (Array.isArray(summary_content) && summary_content.length > 0) {
@@ -144,6 +145,7 @@ const LurnyUser = () => {
               image: getDefaultImg(image, url), // Ensure getDefaultImg function is defined or imported
               url,
             };
+            console.log("lurnyObject", lurnyObject);
             dispatch(handleInsertLurny(lurnyObject));
           }
         }
