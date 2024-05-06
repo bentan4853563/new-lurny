@@ -43,13 +43,7 @@ function LurnyItem({ data }) {
     if (isYoutubeUrl(url)) {
       return getThumbnailURLFromVideoURL(url);
     } else {
-      checkImageUrl(image, function (isValid) {
-        if (isValid) {
-          return image;
-        } else {
-          return defaultImg;
-        }
-      });
+      return image ? image : defaultImg;
     }
   };
 

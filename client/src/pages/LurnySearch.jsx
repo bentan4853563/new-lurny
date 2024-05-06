@@ -91,7 +91,7 @@ const LurnySearch = () => {
           </div> */}
 
         <div className="w-full flex flex-col justify-between items-center">
-          <div className="w-full flex flex-wrap justify-start gap-[8rem] lg:gap-[6rem]">
+          <div className="w-full flex flex-wrap justify-start gap-[8rem] lg:gap-[4rem]">
             {currentItems.map(
               (lurny, index) =>
                 lurny.shared && <LurnyItem key={index} data={lurny} />
