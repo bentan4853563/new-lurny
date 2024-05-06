@@ -73,7 +73,7 @@ export default function QuizItem({
 
   useEffect(() => {
     setSummaryNumber(0);
-    setAnswerNumber(0);
+    setCurrentQuestionNumber(0);
   }, [content]);
 
   useEffect(() => {
