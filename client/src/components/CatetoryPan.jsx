@@ -3,7 +3,7 @@ import AvatarGroup from "react-avatar-group";
 
 export default function CategoryPan() {
   return (
-    <div className="w-[140rem] sm:w-[72rem] lg:w-[30rem] bg-[#262626] flex flex-col shrink-0 items-start gap-[8rem]">
+    <div className="w-[140rem] sm:w-[42rem] lg:w-[32rem] bg-[#262626] flex flex-col shrink-0 items-start gap-[8rem]">
       <div className="flex flex-col items-start gap-[2rem]">
         <span className="text-white text-left text-[3rem] leading-[3.2rem]">
           #American History and Geography

@@ -1,17 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { IoIosArrowForward } from "react-icons/io";
 import { ImSearch } from "react-icons/im";
 
-import LurnyHeader from "../components/LurnyHeader";
 import LurnyItem from "../components/LurnyItem";
 import CategoryPan from "../components/CatetoryPan";
 import NewPagination from "../components/NewPagination";
+import Header from "../components/Header";
+
 // import Pagination from "../components/Pagination";
 
 const LurnySearch = () => {
+  const { lurnies } = useSelector((state) => state.lurny);
+  const [publishedLurnies, setPublishedLurnies] = useState([]);
+
   const [showFilter, setShowFilter] = useState(false);
   const [searchTerm, setSearchTerm] = useState(""); // State to hold the search term
   const [filteredLurnies, setFilteredLurnies] = useState([]);
@@ -23,27 +28,47 @@ const LurnySearch = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredLurnies.slice(indexOfFirstItem, indexOfLastItem);
-  // Change page
+
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  useEffect(() => {
+    if (lurnies.length > 0) {
+      setPublishedLurnies(lurnies.filter((item) => item.shared === true));
+    }
+  }, [lurnies]);
+
+  useEffect(() => {
+    const matchesSearchTerm = (collection) =>
+      collection.toLowerCase().includes(searchTerm.toLowerCase());
+
+    if (searchTerm.trim() !== "") {
+      const filteredBySearch = publishedLurnies.filter((lurny) =>
+        lurny.collections.some(matchesSearchTerm)
+      );
+      setFilteredLurnies(filteredBySearch);
+    } else {
+      setFilteredLurnies(publishedLurnies);
+    }
+  }, [searchTerm, publishedLurnies]);
+
   return (
-    <div className="h-[100vh] w-[100vw] font-raleway">
-      <LurnyHeader />
+    <div className="h-[100vh] font-raleway">
+      <Header />
       <ToastContainer className="text-start" />
 
-      <div className="w-full bg-[#262626] flex flex-col px-[12rem] py-[8rem] gap-[4rem]">
+      <div className="w-full bg-[#262626] flex flex-col px-[12rem] py-[4rem] gap-[4rem]">
         {/* Search bar */}
-        <div className="bg-[#1A1A1A] w-full px-[2rem] py-[1rem] flex flex-item items-center rounded-[0.5rem]">
+        <div className="bg-[#1A1A1A] w-full px-[1.5rem] py-[1rem] flex flex-item items-center rounded-[0.5rem]">
           <ImSearch className="text-white text-[3rem]" />
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="bg-transparent text-white text-[2.5rem] px-[1rem] flex flex-1 focus:outline-none"
+            className="bg-transparent text-white text-[2.5rem] px-[1.5rem] flex flex-1 focus:outline-none"
             placeholder="Search topics and people"
           />
         </div>
-        <div className="flex justify-between">
+        <div className="w-full flex justify-between">
           {/* Toggle button for mobile */}
           <div
             onClick={() => setShowFilter(!showFilter)}
@@ -63,20 +88,21 @@ const LurnySearch = () => {
             <CategoryPan />
           </div>
 
-          <div className="flex flex-col justify-between">
-            <div className="flex flex-wrap ml-[12rem] justify-start gap-[8rem] lg:gap-[2rem]">
-              {currentItems.length > 0 &&
-                currentItems.map(
-                  (lurny, index) =>
-                    lurny.shared && <LurnyItem key={index} data={lurny} />
-                )}
+          <div className="w-full flex flex-col justify-between items-center">
+            <div className="w-full flex flex-wrap pl-[10rem] justify-start gap-[8rem] lg:gap-[4rem]">
+              {currentItems.map(
+                (lurny, index) =>
+                  lurny.shared && <LurnyItem key={index} data={lurny} />
+              )}
             </div>
-            <NewPagination
-              totalItems={filteredLurnies.length}
-              itemsPerPage={itemsPerPage}
-              currentPage={currentPage}
-              paginate={(value) => paginate(value)}
-            />
+            {filteredLurnies.length > itemsPerPage && (
+              <NewPagination
+                totalItems={filteredLurnies && filteredLurnies.length}
+                itemsPerPage={itemsPerPage}
+                currentPage={currentPage}
+                paginate={(value) => paginate(value)}
+              />
+            )}
           </div>
         </div>
       </div>

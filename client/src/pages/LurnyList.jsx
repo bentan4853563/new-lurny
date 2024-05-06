@@ -12,7 +12,7 @@ import NewPagination from "../components/NewPagination";
 import Header from "../components/Header";
 // import Pagination from "../components/Pagination";
 
-const LurnyPublish = () => {
+const LurnyList = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ const LurnyPublish = () => {
   const [filteredLurnies, setFilteredLurnies] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedMedias, setSelectedMedias] = useState([]); // Assuming "Video" is another possible type
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchCategoryTerm, setSearchCategoryTerm] = useState("");
 
   const [categories, setCategories] = useState([{ category: "", count: 0 }]);
   const [media, setMedia] = useState([{ media: "", count: 0 }]);
@@ -35,7 +35,6 @@ const LurnyPublish = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredLurnies.slice(indexOfFirstItem, indexOfLastItem);
-  // Change page
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -87,7 +86,7 @@ const LurnyPublish = () => {
 
   useEffect(() => {
     const categoryMatchesSearchTerm = (category) =>
-      category.toLowerCase().includes(searchTerm.toLowerCase());
+      category.toLowerCase().includes(searchCategoryTerm.toLowerCase());
 
     const newCategories = publishedLurnies
       .filter((lurny) => {
@@ -121,7 +120,7 @@ const LurnyPublish = () => {
 
     // Set the categories with the reduced result
     setCategories(newCategories);
-  }, [selectedMedias, searchTerm, publishedLurnies]);
+  }, [selectedMedias, searchCategoryTerm, publishedLurnies]);
 
   useEffect(() => {
     function handleMessage(event) {
@@ -150,15 +149,16 @@ const LurnyPublish = () => {
       <Header />
       <ToastContainer className="text-start" />
       <div className="w-full bg-[#2E2E2E] flex flex-col gap-[3rem] items-center text-white py-[4rem] sm:py-[3rem] lg:py-[2rem]">
-        <div className="w-4/5 hidden sm:flex flex-wrap justify-center gap-[2rem] text-[12rem] lg:text-[4rem] font-bold">
+        <div className="w-4/5 hidden sm:flex flex-wrap justify-center gap-[2rem] text-[10rem] lg:text-[2.5rem] font-bold">
           {selectedCategories.length > 0 &&
             selectedCategories.map((category, index) => (
-              <span key={index} className="leading:[12.5rem] lg:leading-[3rem]">
+              <span key={index} className="leading:[10rem] sm:leading-[3rem]">
                 {category}
                 {index < selectedCategories.length - 1 && <span>,</span>}
               </span>
             ))}
         </div>
+
         <span className="text-[8rem] lg:text-[2.5rem] font-medium">
           {filteredLurnies.length} Lurnies and counting…
         </span>
@@ -187,7 +187,7 @@ const LurnyPublish = () => {
             changeCategory={(selectedItems) =>
               setSelectedCategories(selectedItems)
             }
-            searchCategory={(value) => setSearchTerm(value)}
+            searchCategory={(value) => setSearchCategoryTerm(value)}
           />
         </div>
 
@@ -212,4 +212,4 @@ const LurnyPublish = () => {
   );
 };
 
-export default LurnyPublish;
+export default LurnyList;

@@ -294,7 +294,7 @@ function LurnyQuiz() {
 
         <div className="flex items-center gap-[8rem] lg:gap-[2rem]">
           {lurnies.length > 0 && (
-            <Link to={"/lurny/list"}>
+            <Link to={"/lurny/search"}>
               <IoSearchSharp className="text-white text-[16rem] sm:text-[4rem] hover:text-gray-400" />
             </Link>
           )}

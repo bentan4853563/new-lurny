@@ -9,7 +9,7 @@ import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
 import LurnyQuiz from "./pages/LurnyQuiz";
 import LurnyPrice from "./pages/LurnyPrice";
-import LurnyPublish from "./pages/LurnyPublish";
+import LurnyList from "./pages/LurnyList";
 import LurnyUser from "./pages/LurnyUser";
 import LurnySetting from "./pages/LurnySetting";
 import LurnySearch from "./pages/LurnySearch";
@@ -57,7 +57,7 @@ function App() {
         <Router style={{ minWidth: "100vw" }}>
           <Routes>
             <Route path="/lurny" element={<ProtectedRoute />}>
-              <Route path="list" element={<LurnyPublish />} />
+              <Route path="list" element={<LurnyList />} />
               <Route path="profile" element={<LurnyUser />} />
               <Route path="feeds/:id" element={<LurnyQuiz />} />
               <Route path="search" element={<LurnySearch />} />

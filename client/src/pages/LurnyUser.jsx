@@ -212,7 +212,7 @@ const LurnyUser = () => {
   );
 
   return (
-    <div className="min-w-[100vw] min-h-[100vh] font-raleway">
+    <div className="min-h-[100vh] font-raleway">
       <Header />
       <ToastContainer className="text-[2rem]" />
       <div className="w-full bg-[#262626] flex flex-1 justify-between px-[12rem] py-[6rem]">
