@@ -138,9 +138,12 @@ export default function Header() {
           align="end"
         >
           <MenuItem>
-            <span className="w-full py-[2rem] sm:py-[0.5rem] text-black text-[8rem] sm:text-[1.5rem]">
+            <Link
+              to="/"
+              className="w-full py-[2rem] sm:py-[0.5rem] text-black text-[8rem] sm:text-[1.5rem]"
+            >
               About
-            </span>
+            </Link>
           </MenuItem>
           <MenuItem>
             <span className="w-full py-[2rem] sm:py-[0.5rem] text-black text-[8rem] sm:text-[1.5rem]">
