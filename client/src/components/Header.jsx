@@ -25,6 +25,24 @@ export default function Header() {
   const accessToken = localStorage.getItem("token");
 
   useEffect(() => {
+    function handleMessage(event) {
+      if (
+        event.source === window &&
+        event.data.type &&
+        event.data.type === "FROM_EXTENSION"
+      ) {
+        const data = event.data.payload;
+        localStorage.setItem("tempData", JSON.stringify(data));
+        navigate("/lurny/profile");
+        // setTempData(JSON.stringify(data));
+      }
+    }
+
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, []);
+
+  useEffect(() => {
     if (accessToken) {
       setUserData(jwtDecode(accessToken));
     } else setUserData(null);

@@ -31,11 +31,6 @@ function App() {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.loading);
 
-  const useNavigation = () => {
-    const navigate = useNavigate();
-    return navigate;
-  };
-
   useEffect(() => {
     dispatch(getLurnies());
     const accessToken = localStorage.getItem("token");
@@ -53,7 +48,6 @@ function App() {
       ) {
         const data = event.data.payload;
         localStorage.setItem("tempData", JSON.stringify(data));
-        navigate("/lurny/profile");
       }
     }
 
