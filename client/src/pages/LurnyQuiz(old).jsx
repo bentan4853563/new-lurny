@@ -55,7 +55,7 @@ function LurnyQuiz() {
   let { url } = useParams();
 
   useEffect(() => {
-    const accessToken = sessionStorage.getItem("token");
+    const accessToken = localStorage.getItem("token");
     if (accessToken) {
       setUserData(jwtDecode(accessToken));
     }

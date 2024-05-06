@@ -15,14 +15,14 @@ export default function LurnyHeader() {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    const accessToken = sessionStorage.getItem("token");
+    const accessToken = localStorage.getItem("token");
     if (accessToken) {
       setUserData(jwtDecode(accessToken));
     }
   }, []);
 
   const handleLogout = () => {
-    sessionStorage.removeItem("token");
+    localStorage.removeItem("token");
     navigate("/");
   };
 

@@ -22,7 +22,7 @@ export default function Header() {
   const [userData, setUserData] = useState(null);
   const { lurnies } = useSelector((state) => state.lurny);
 
-  const accessToken = sessionStorage.getItem("token");
+  const accessToken = localStorage.getItem("token");
 
   useEffect(() => {
     if (accessToken) {

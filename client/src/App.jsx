@@ -28,7 +28,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getLurnies());
-    const accessToken = sessionStorage.getItem("token");
+    const accessToken = localStorage.getItem("token");
     if (accessToken) {
       dispatch(setUserDetails(jwtDecode(accessToken)));
     }

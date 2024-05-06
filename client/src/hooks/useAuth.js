@@ -1,5 +1,5 @@
 const useAuth = () => {
-  const token = sessionStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   const isAuthenticated = token ? true : false;
 
