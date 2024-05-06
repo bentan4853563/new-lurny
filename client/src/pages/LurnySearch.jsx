@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { IoIosArrowForward } from "react-icons/io";
+// import { IoIosArrowForward } from "react-icons/io";
 import { ImSearch } from "react-icons/im";
 
 import LurnyItem from "../components/LurnyItem";
-import CategoryPan from "../components/CatetoryPan";
+// import CategoryPan from "../components/CatetoryPan";
 import NewPagination from "../components/NewPagination";
 import Header from "../components/Header";
 
@@ -17,7 +17,7 @@ const LurnySearch = () => {
   const { lurnies } = useSelector((state) => state.lurny);
   const [publishedLurnies, setPublishedLurnies] = useState([]);
 
-  const [showFilter, setShowFilter] = useState(false);
+  // const [showFilter, setShowFilter] = useState(false);
   const [searchTerm, setSearchTerm] = useState(""); // State to hold the search term
   const [filteredLurnies, setFilteredLurnies] = useState([]);
 
@@ -42,8 +42,11 @@ const LurnySearch = () => {
       collection.toLowerCase().includes(searchTerm.toLowerCase());
 
     if (searchTerm.trim() !== "") {
-      const filteredBySearch = publishedLurnies.filter((lurny) =>
-        lurny.collections.some(matchesSearchTerm)
+      const filteredBySearch = publishedLurnies.filter(
+        (lurny) =>
+          lurny.collections.some(matchesSearchTerm) ||
+          lurny.summary.some(matchesSearchTerm) ||
+          lurny.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredLurnies(filteredBySearch);
     } else {
@@ -68,9 +71,8 @@ const LurnySearch = () => {
             placeholder="Search topics and people"
           />
         </div>
-        <div className="w-full flex justify-between">
-          {/* Toggle button for mobile */}
-          <div
+        {/* Toggle button for mobile */}
+        {/* <div
             onClick={() => setShowFilter(!showFilter)}
             className="h-full bg-transparent sm:hidden fixed bottom-0 left-0 flex items-center z-50"
           >
@@ -81,29 +83,28 @@ const LurnySearch = () => {
                   : ""
               }`}
             />
-          </div>
+          </div> */}
 
-          {/* FilterPan is hidden on small screens initially */}
-          <div className={`${showFilter ? "absolute" : "hidden"} sm:block`}>
+        {/* FilterPan is hidden on small screens initially */}
+        {/* <div className={`${showFilter ? "absolute" : "hidden"} sm:block`}>
             <CategoryPan />
-          </div>
+          </div> */}
 
-          <div className="w-full flex flex-col justify-between items-center">
-            <div className="w-full flex flex-wrap pl-[10rem] justify-start gap-[8rem] lg:gap-[4rem]">
-              {currentItems.map(
-                (lurny, index) =>
-                  lurny.shared && <LurnyItem key={index} data={lurny} />
-              )}
-            </div>
-            {filteredLurnies.length > itemsPerPage && (
-              <NewPagination
-                totalItems={filteredLurnies && filteredLurnies.length}
-                itemsPerPage={itemsPerPage}
-                currentPage={currentPage}
-                paginate={(value) => paginate(value)}
-              />
+        <div className="w-full flex flex-col justify-between items-center">
+          <div className="w-full flex flex-wrap justify-start gap-[8rem] lg:gap-[6rem]">
+            {currentItems.map(
+              (lurny, index) =>
+                lurny.shared && <LurnyItem key={index} data={lurny} />
             )}
           </div>
+          {filteredLurnies.length > itemsPerPage && (
+            <NewPagination
+              totalItems={filteredLurnies && filteredLurnies.length}
+              itemsPerPage={itemsPerPage}
+              currentPage={currentPage}
+              paginate={(value) => paginate(value)}
+            />
+          )}
         </div>
       </div>
     </div>

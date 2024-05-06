@@ -23,11 +23,33 @@ function LurnyItem({ data }) {
     }
   };
 
+  function checkImageUrl(url, callback) {
+    var img = new Image();
+
+    // Define the event listener for the 'load' event
+    img.onload = function () {
+      callback(true); // Image URL is correct and image is loaded
+    };
+
+    // Define the event listener for the 'error' event
+    img.onerror = function () {
+      callback(false); // Image URL is incorrect or image cannot be loaded
+    };
+
+    img.src = url;
+  }
+
   const getDefaultImg = (image, url) => {
     if (isYoutubeUrl(url)) {
       return getThumbnailURLFromVideoURL(url);
     } else {
-      return image ? image : defaultImg;
+      checkImageUrl(image, function (isValid) {
+        if (isValid) {
+          return image;
+        } else {
+          return defaultImg;
+        }
+      });
     }
   };
 
