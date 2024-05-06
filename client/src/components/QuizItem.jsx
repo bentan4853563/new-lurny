@@ -72,9 +72,14 @@ export default function QuizItem({
   // }, [language, data]);
 
   useEffect(() => {
+    setSummaryNumber(0);
+    setAnswerNumber(0);
+  }, [content]);
+
+  useEffect(() => {
     setAnswerNumber(null);
     setAnswered(false);
-  }, [content, currentQuestionNumber]);
+  }, [currentQuestionNumber]);
 
   // const translateContent = async () => {
   //   try {
