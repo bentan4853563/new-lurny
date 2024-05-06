@@ -389,7 +389,7 @@ export default function MobileQuizItem({
                     </div>
 
                     <span className="text-[#FFFF00] text-[10rem] leading-[12rem] sm:text-[2.5rem] sm:leading-[3rem] font-bold">
-                      {summary.length - 1} learning points
+                      {summary.length} learning points
                     </span>
                     <h3 className="text-left text-white text-[18rem] sm:text-[3rem] leading-[18rem] sm:leading-[3.5rem] font-semibold cursor-pointer">
                       {/* {translatedTitle && translatedTitle} */}
