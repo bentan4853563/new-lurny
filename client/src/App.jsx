@@ -1,7 +1,12 @@
 import { Suspense, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { jwtDecode } from "jwt-decode";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 
 import Loading from "./components/Loading";
 import About from "./pages/About";
@@ -23,6 +28,7 @@ import "./App.css";
 import "animate.css";
 
 function App() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.loading);
 
@@ -43,12 +49,17 @@ function App() {
       ) {
         const data = event.data.payload;
         localStorage.setItem("tempData", JSON.stringify(data));
+        handleGotoProfilePage();
       }
     }
 
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
   }, []);
+
+  const handleGotoProfilePage = () => {
+    navigate("/lurny/profile");
+  };
 
   return (
     <>
