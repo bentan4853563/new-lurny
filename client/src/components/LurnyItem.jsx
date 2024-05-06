@@ -1,5 +1,6 @@
 /* eslint-disable no-useless-escape */
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -9,11 +10,8 @@ function LurnyItem({ data }) {
   const navigate = useNavigate();
   const { userDetails } = useSelector((state) => state.user);
 
+  const [imageUrl, setImageUrl] = useState(null);
   const { _id, title, image, url } = data;
-
-  const handleClick = () => {
-    navigate(`/lurny/feeds/${_id}`);
-  };
 
   const isYoutubeUrl = (url) => {
     if (url) {
@@ -23,12 +21,31 @@ function LurnyItem({ data }) {
     }
   };
 
-  const getDefaultImg = (image, url) => {
+  useEffect(() => {
+    // This effect should run whenever `image` or `url` props change
     if (isYoutubeUrl(url)) {
-      return getThumbnailURLFromVideoURL(url);
+      setImageUrl(getThumbnailURLFromVideoURL(url));
+    } else if (image) {
+      const img = new Image();
+
+      img.onload = () => {
+        console.log("Image loaded successfully");
+        setImageUrl(image);
+      };
+      img.onerror = () => {
+        console.log(image, url);
+        console.log("Image failed to load, using default image");
+        setImageUrl(defaultImg);
+      };
+
+      img.src = image;
     } else {
-      return image ? image : defaultImg;
+      setImageUrl(defaultImg);
     }
+  }, [image, url]); // Dependencies array for the effect
+
+  const handleClick = () => {
+    navigate(`/lurny/feeds/${_id}`);
   };
 
   function getYoutubeVideoID(url) {
@@ -48,7 +65,7 @@ function LurnyItem({ data }) {
     return `https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`;
   }
 
-  const newImg = getDefaultImg(image, url);
+  // const newImg = getDefaultImg(image, url);
   // userDetails && console.log(userDetails.email);
   return (
     <div
@@ -57,10 +74,10 @@ function LurnyItem({ data }) {
     >
       {userDetails && (
         <img
-          src={
-            userDetails.email === "bentan010918@gmail.com" ? defaultImg : newImg
-          }
-          // src={newImg}
+          // src={
+          //   userDetails.email === "bentan010918@gmail.com" ? defaultImg : newImg
+          // }
+          src={imageUrl}
           alt="lurny image"
           className="h-[80rem] sm:h-[24rem] lg:h-[16rem] w-full object-cover rounded-[8rem] sm:rounded-[1.5rem]"
         />
