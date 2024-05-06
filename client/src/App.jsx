@@ -28,9 +28,13 @@ import "./App.css";
 import "animate.css";
 
 function App() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.loading);
+
+  const useNavigation = () => {
+    const navigate = useNavigate();
+    return navigate;
+  };
 
   useEffect(() => {
     dispatch(getLurnies());
@@ -49,17 +53,13 @@ function App() {
       ) {
         const data = event.data.payload;
         localStorage.setItem("tempData", JSON.stringify(data));
-        handleGotoProfilePage();
+        navigate("/lurny/profile");
       }
     }
 
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
   }, []);
-
-  const handleGotoProfilePage = () => {
-    navigate("/lurny/profile");
-  };
 
   return (
     <>
