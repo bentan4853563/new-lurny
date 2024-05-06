@@ -23,6 +23,7 @@ export default function QuizItem({
   const navigate = useNavigate();
 
   const { _id, title, summary, quiz, image, url, user } = data;
+
   // const api_key = import.meta.env.VITE_CLOUD_TRANSLATE_API_KEY;
   const [summaryNumber, setSummaryNumber] = useState(0);
 
@@ -184,9 +185,24 @@ export default function QuizItem({
 
   const getDefaultImg = (image, url) => {
     if (isYoutubeUrl(url)) {
-      return getThumbnailURLFromVideoURL(url);
+      return Promise.resolve(getThumbnailURLFromVideoURL(url));
+    } else if (image) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+
+        img.onload = () => {
+          console.log("Image loaded successfully");
+          resolve(image);
+        };
+        img.onerror = () => {
+          console.log("Image failed to load, using default image");
+          resolve(defaultImg);
+        };
+
+        img.src = image;
+      });
     } else {
-      return image ? image : defaultImg;
+      return Promise.resolve(defaultImg);
     }
   };
 
@@ -387,11 +403,7 @@ export default function QuizItem({
           {summaryNumber === 0 && userData && (
             <div className="h-full flex flex-col justify-start relative animate__animated animate__flipInY">
               <img
-                src={
-                  userData.email === "bentan010918@gmail.com"
-                    ? defaultImg
-                    : newImg
-                }
+                src={newImg}
                 alt={title}
                 className="w-full h-full object-cover rounded-[8rem] sm:rounded-[2rem]"
               />
@@ -471,11 +483,7 @@ export default function QuizItem({
             <div className="h-full relative animate__animated animate__flipInY">
               {userData && (
                 <img
-                  src={
-                    userData.email === "bentan010918@gmail.com"
-                      ? defaultImg
-                      : newImg
-                  }
+                  src={newImg}
                   alt={title}
                   className="w-full h-full object-cover rounded-2xl"
                 />

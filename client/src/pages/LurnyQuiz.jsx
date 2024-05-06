@@ -129,9 +129,24 @@ function LurnyQuiz() {
 
   const getDefaultImg = (image, url) => {
     if (isYoutubeUrl(url)) {
-      return getThumbnailURLFromVideoURL(url);
+      return Promise.resolve(getThumbnailURLFromVideoURL(url));
+    } else if (image) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+
+        img.onload = () => {
+          console.log("Image loaded successfully");
+          resolve(image);
+        };
+        img.onerror = () => {
+          console.log("Image failed to load, using default image");
+          resolve(defaultImg);
+        };
+
+        img.src = image;
+      });
     } else {
-      return image;
+      return Promise.resolve(defaultImg);
     }
   };
 
