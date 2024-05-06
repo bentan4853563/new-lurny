@@ -24,6 +24,7 @@ import "@szhsin/react-menu/dist/transitions/slide.css";
 
 import LetterLogo from "../assets/icons/letter_logo.png";
 import defaultImg from "../assets/images/Lurny/default.png";
+import { IoSearchSharp } from "react-icons/io5";
 
 import QuizItem from "../components/QuizItem";
 import MobileQuizItem from "../components/MobileQuizItem";
@@ -292,6 +293,11 @@ function LurnyQuiz() {
         )}
 
         <div className="flex items-center gap-[8rem] lg:gap-[2rem]">
+          {lurnies.length > 0 && (
+            <Link to={"/lurny/list"}>
+              <IoSearchSharp className="text-white text-[16rem] sm:text-[4rem] hover:text-gray-400" />
+            </Link>
+          )}
           {userData && (
             <Menu
               menuButton={
