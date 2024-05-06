@@ -11,6 +11,7 @@ import "@szhsin/react-menu/dist/index.css";
 import "@szhsin/react-menu/dist/transitions/slide.css";
 
 import { IoCompassOutline } from "react-icons/io5";
+import { IoSearchSharp } from "react-icons/io5";
 import LetterLogo from "../assets/icons/letter_logo.png";
 import ChromeIcon from "../assets/icons/chrome.png";
 
@@ -50,6 +51,11 @@ export default function Header() {
         {lurnies.length > 0 && (
           <Link to={`/lurny/feeds/${lurnies[0]._id}`}>
             <IoCompassOutline className="text-white text-[16rem] sm:text-[4rem] hover:text-gray-400" />
+          </Link>
+        )}
+        {lurnies.length > 0 && (
+          <Link to={"/lurny/list"}>
+            <IoSearchSharp className="text-white text-[16rem] sm:text-[4rem] hover:text-gray-400" />
           </Link>
         )}
 

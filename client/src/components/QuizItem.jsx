@@ -434,7 +434,9 @@ export default function QuizItem({
                         : "animate__animated animate__fadeIn"
                     } `}
                   >
-                    <span>{index + 1}</span>
+                    <span className="font-bold  text-[10rem] sm:text-[3rem]">
+                      {index + 1} / {summary.length}
+                    </span>
                     <p>{bullet}</p>
                   </div>
                 )
