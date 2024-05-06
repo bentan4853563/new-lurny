@@ -220,7 +220,7 @@ function LurnyQuiz() {
     <div className="min-h-[100vh] bg-black font-raleway flex flex-col justify-between sm:justify-start">
       {/* Header */}
       <div className="w-full bg-black px-[4rem] sm:px-[20rem] flex justify-between items-center py-[4rem] lg:py-[1.5rem]">
-        <Link to="/lurny/list" className="select-none">
+        <Link to="/lurny/search" className="select-none">
           <img
             src={LetterLogo}
             alt="Letter logo"

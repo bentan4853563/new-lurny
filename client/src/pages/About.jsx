@@ -20,7 +20,7 @@ import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import VideoModal from "../components/VidoeModal";
 
-export default function Home() {
+export default function About() {
   const navigate = useNavigate();
 
   const [url, setURL] = useState("");

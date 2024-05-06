@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Loading from "./components/Loading";
-import Home from "./pages/Home";
+import About from "./pages/About";
 import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
 import LurnyQuiz from "./pages/LurnyQuiz";
@@ -64,7 +64,7 @@ function App() {
               <Route path="price" element={<LurnyPrice />} />
               <Route path="setting" element={<LurnySetting />} />
             </Route>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<About />} />
             <Route path="/signin" element={<Signin />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />

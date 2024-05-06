@@ -18,7 +18,7 @@ export const signIn = (accessToken, navigate) => async (dispatch) => {
     if (response.ok) {
       const data = await response.json();
       dispatch(login(data.token));
-      navigate("/lurny/profile");
+      navigate("/lurny/search");
     } else {
       if (response.status == 404) {
         toast.error("Please signup first!", {
