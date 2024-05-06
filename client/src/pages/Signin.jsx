@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
-import { GrGoogle } from "react-icons/gr";
+// import { GrGoogle } from "react-icons/gr";
+import { FcGoogle } from "react-icons/fc";
+
 // import { FaFacebookSquare } from "react-icons/fa";
 // import { FaLinkedin } from "react-icons/fa";
 
@@ -62,28 +64,28 @@ export default function Signin() {
         alt="background image"
         className="w-full h-full object-cover"
       />
-      <div className="w-[160rem] sm:w-[120rem] md:w-[80rem] lg:w-[48rem] xl:w-[40rem] px-[8rem] sm:px-[4rem] xl:px-[2.5rem] py-[16rem] sm:py-[8rem] xl:py-[4rem] bg-white flex flex-col items-start gap-[10rem] md:gap-[6rem] xl:gap-[2.5rem] text-black rounded-[4rem] sm:rounded-[2rem] fixed">
+      <div className="w-[140rem] sm:w-[100rem] md:w-[64rem] lg:w-[56rem] xl:w-[36rem] px-[8rem] sm:px-[4rem] xl:px-[2.5rem] py-[16rem] sm:py-[8rem] xl:py-[4rem] bg-white flex flex-col items-start gap-[10rem] md:gap-[6rem] xl:gap-[2.5rem] text-black rounded-[4rem] sm:rounded-[2rem] fixed">
         <IoClose
           onClick={handleCloseSigninModal}
           className="absolute top-[4rem] sm:top-[2rem] right-[4rem] sm:right-[2rem] text-black text-[10rem] sm:text-[8rem] md:text-[4rem] lg:text-[2.5rem] xl:text-[2rem] cursor-pointer"
         />
-        <h1 className="text-black text-[16rem] sm-[text-12rem] md:text-[6rem] lg:text-[5rem] xl:text-[3rem] font-bold">
+        <h1 className="text-black text-[16rem] sm:text-[10rem] md:text-[6rem] lg:text-[5rem] xl:text-[3rem] font-bold">
           Signin Lurny
         </h1>
         <p className="text-black text-left text-[8rem] sm:text-[6rem] md:text-[4rem] lg:text-[3rem] xl:text-[2rem]">
           The world&lsquo;s largest collection of smart learning objects that
           help you learn efficiently.
         </p>
-        <div className="flex flex-col gap-[4rem] sm:gap-[3rem] md:gap-[2rem] xl:gap-[1rem] text-black text-[10rem] sm:text-[8rem] md:text-[4rem] lg:text-[2.5rem] xl:text-[2rem]">
+        <div className="flex flex-col gap-[4rem] sm:gap-[3rem] md:gap-[2rem] xl:gap-[1rem] text-black text-[8rem] sm:text-[6rem] md:text-[4rem] lg:text-[2.5rem] xl:text-[2rem]">
           {/* <div className="flex items-center gap-[2rem] px-[4rem] sm:px-[1rem] py-[0.5rem] border border-gray-300 outline-none hover:border-[#7F52BB] rounded-md cursor-pointer ">
             <FaLinkedin />
             <span>Continue with LinkedIn</span>
           </div> */}
           <div
             onClick={signInWithGoogle}
-            className=" flex items-center gap-[2rem] px-[4rem] sm:px-[2rem] py-[1rem] border border-gray-300 outline-none hover:border-[#7F52BB] rounded-md cursor-pointer hover:"
+            className=" flex items-center gap-[4rem] sm:gap-[2rem] px-[4rem] sm:px-[2rem] py-[1rem] border border-gray-300 outline-none hover:border-[#7F52BB] rounded-md cursor-pointer hover:"
           >
-            <GrGoogle />
+            <FcGoogle />
             <span className="text-black">Continue with Google</span>
           </div>
           {/* <div
