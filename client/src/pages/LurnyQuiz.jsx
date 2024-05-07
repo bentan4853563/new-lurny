@@ -45,11 +45,14 @@ function LurnyQuiz() {
   const [content, setContent] = useState(0);
   const [openRememberModal, setOpenRememberModal] = useState(false);
 
+  const [imageUrl, setImageUrl] = useState(null);
+
   // const [isExpand, setIsExpand] = useState(false);
 
   const { collections } = quizData;
 
   let { id } = useParams();
+  const { image, url } = quizData;
 
   useEffect(() => {
     const accessToken = localStorage.getItem("token");
@@ -127,28 +130,33 @@ function LurnyQuiz() {
     }
   };
 
-  const getDefaultImg = (image, url) => {
+  // const getDefaultImg = (image, url) => {
+  //   if (isYoutubeUrl(url)) {
+  //     return getThumbnailURLFromVideoURL(url);
+  //   } else if (image) {
+  //     console.log(image);
+  //     return image ? image : defaultImg;
+  //   }
+  // };
+
+  useEffect(() => {
     if (isYoutubeUrl(url)) {
-      return Promise.resolve(getThumbnailURLFromVideoURL(url));
+      setImageUrl(getThumbnailURLFromVideoURL(url));
     } else if (image) {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
+      const img = new Image();
 
-        img.onload = () => {
-          console.log("Image loaded successfully");
-          resolve(image);
-        };
-        img.onerror = () => {
-          console.log("Image failed to load, using default image");
-          resolve(defaultImg);
-        };
+      img.onload = () => {
+        setImageUrl(image);
+      };
+      img.onerror = () => {
+        setImageUrl(defaultImg);
+      };
 
-        img.src = image;
-      });
+      img.src = image;
     } else {
-      return Promise.resolve(defaultImg);
+      setImageUrl(defaultImg);
     }
-  };
+  }, [image, url]);
 
   function getYoutubeVideoID(url) {
     const regExp =
@@ -167,7 +175,7 @@ function LurnyQuiz() {
     return `https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`;
   }
 
-  const newImg = getDefaultImg(quizData.image, quizData.url);
+  // const newImg = getDefaultImg(quizData.image, quizData.url);
 
   const buttons = ["Stubs", "Quiz Me!", "Remember this"];
 
@@ -409,11 +417,7 @@ function LurnyQuiz() {
               </span>
               {userData && (
                 <img
-                  src={
-                    userData.email === "bentan010918@gmail.com"
-                      ? defaultImg
-                      : newImg
-                  }
+                  src={imageUrl}
                   alt=""
                   className="w-full h-[64rem] sm:h-[20rem] object-cover rounded-[2rem] mt-[3rem]"
                 />

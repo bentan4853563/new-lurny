@@ -43,6 +43,8 @@ export default function QuizItem({
 
   const [userData, setUserData] = useState(null);
 
+  const [imageUrl, setImageUrl] = useState(null);
+
   useEffect(() => {
     const accessToken = localStorage.getItem("token");
     if (accessToken) {
@@ -183,28 +185,34 @@ export default function QuizItem({
     }
   };
 
-  const getDefaultImg = (image, url) => {
+  // const getDefaultImg = (image, url) => {
+  //   if (isYoutubeUrl(url)) {
+  //     return getThumbnailURLFromVideoURL(url);
+  //   } else if (image) {
+  //     return image ? image : defaultImg;
+  //   } else {
+  //     return defaultImg;
+  //   }
+  // };
+
+  useEffect(() => {
     if (isYoutubeUrl(url)) {
-      return Promise.resolve(getThumbnailURLFromVideoURL(url));
+      setImageUrl(getThumbnailURLFromVideoURL(url));
     } else if (image) {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
+      const img = new Image();
 
-        img.onload = () => {
-          console.log("Image loaded successfully");
-          resolve(image);
-        };
-        img.onerror = () => {
-          console.log("Image failed to load, using default image");
-          resolve(defaultImg);
-        };
+      img.onload = () => {
+        setImageUrl(image);
+      };
+      img.onerror = () => {
+        setImageUrl(defaultImg);
+      };
 
-        img.src = image;
-      });
+      img.src = image;
     } else {
-      return Promise.resolve(defaultImg);
+      setImageUrl(defaultImg);
     }
-  };
+  }, [image, url]);
 
   function getYoutubeVideoID(url) {
     const regExp =
@@ -223,7 +231,7 @@ export default function QuizItem({
     return `https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`;
   }
 
-  const newImg = getDefaultImg(image, url);
+  // const newImg = getDefaultImg(image, url);
 
   // change summary
   const handlePrevious = () => {
@@ -403,7 +411,7 @@ export default function QuizItem({
           {summaryNumber === 0 && userData && (
             <div className="h-full flex flex-col justify-start relative animate__animated animate__flipInY">
               <img
-                src={newImg}
+                src={imageUrl}
                 alt={title}
                 className="w-full h-full object-cover rounded-[8rem] sm:rounded-[2rem]"
               />
@@ -483,7 +491,7 @@ export default function QuizItem({
             <div className="h-full relative animate__animated animate__flipInY">
               {userData && (
                 <img
-                  src={newImg}
+                  src={imageUrl}
                   alt={title}
                   className="w-full h-full object-cover rounded-2xl"
                 />

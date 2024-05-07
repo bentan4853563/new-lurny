@@ -22,19 +22,15 @@ function LurnyItem({ data }) {
   };
 
   useEffect(() => {
-    // This effect should run whenever `image` or `url` props change
     if (isYoutubeUrl(url)) {
       setImageUrl(getThumbnailURLFromVideoURL(url));
     } else if (image) {
       const img = new Image();
 
       img.onload = () => {
-        console.log("Image loaded successfully");
         setImageUrl(image);
       };
       img.onerror = () => {
-        console.log(image, url);
-        console.log("Image failed to load, using default image");
         setImageUrl(defaultImg);
       };
 
@@ -42,7 +38,7 @@ function LurnyItem({ data }) {
     } else {
       setImageUrl(defaultImg);
     }
-  }, [image, url]); // Dependencies array for the effect
+  }, [image, url]);
 
   const handleClick = () => {
     navigate(`/lurny/feeds/${_id}`);
