@@ -130,14 +130,14 @@ function LurnyQuiz() {
     }
   };
 
-  // const getDefaultImg = (image, url) => {
-  //   if (isYoutubeUrl(url)) {
-  //     return getThumbnailURLFromVideoURL(url);
-  //   } else if (image) {
-  //     console.log(image);
-  //     return image ? image : defaultImg;
-  //   }
-  // };
+  const getDefaultImg = (image, url) => {
+    if (isYoutubeUrl(url)) {
+      return getThumbnailURLFromVideoURL(url);
+    } else if (image) {
+      console.log(image);
+      return image ? image : defaultImg;
+    }
+  };
 
   useEffect(() => {
     if (isYoutubeUrl(url)) {
@@ -547,7 +547,7 @@ function LurnyQuiz() {
                         key={index}
                         className="text-gray-300 text-left text-[6rem] sm:text-[2rem] cursor-pointer"
                       >
-                        {keyword}
+                        {keyword.includes("#") ? keyword : `# ${keyword}`}
                       </li>
                     ))}
                 </ul>
@@ -570,12 +570,7 @@ function LurnyQuiz() {
                             onClick={() => {
                               navigate(`/lurny/feeds/${item._id}`);
                             }}
-                            // src="###"
-                            src={
-                              userData.email === "bentan010918@gmail.com"
-                                ? defaultImg
-                                : getDefaultImg(item.image, item.url)
-                            }
+                            src={getDefaultImg(item.image, item.url)}
                             alt="lurny image"
                             className="w-[10rem] h-[6rem] rounded-lg cursor-pointer"
                           />
