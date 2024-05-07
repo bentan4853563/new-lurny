@@ -244,7 +244,7 @@ const LurnyUser = () => {
 
         {/* My Lurnies */}
         <div className="w-full flex flex-col justify-between items-center">
-          <div className="w-full flex flex-wrap pl-[10rem] justify-start gap-[8rem] lg:gap-[4rem]">
+          <div className="w-full flex flex-wrap pl-[6rem] justify-start gap-[8rem] lg:gap-[4rem]">
             {currentItems &&
               currentItems.length > 0 &&
               currentItems.map((lurny, index) => {
